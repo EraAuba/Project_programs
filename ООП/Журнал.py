@@ -1,3 +1,14 @@
+import tkinter as tk
+
+#create screen
+root = tk.Tk()
+root.geometry("600x500")
+root.title("Журнал")
+
+how_mush = tk.Entry(root).get()
+how_mush.pack()
+tk.Label(root, text="How mush students?").pack()
+
 names = []
 counts = []
 how_mush = int(input("How mush students? "))
@@ -8,7 +19,7 @@ if how_mush>=12:
     for i in range(1, how_mush+1):
         counts.append(i)
     list_students = dict(zip(names, counts))
-    print("List of students: ")
+    print("List of students: ", list_students)
     
     #delete
     def Delete(list1):
@@ -22,10 +33,16 @@ if how_mush>=12:
             values_list[i] = counts[i] #list = list
         list1 = dict(zip(names_list, values_list))
         print("Удаленный студент: ", list1)
+    
+    #add
+    def Add(list):
+        name = str(input('Какое имя? '))
+        list[name] = len(list) + 1 
+        return list
 
 Delete(list_students)
 
 
 
 
-
+root.mainloop()
